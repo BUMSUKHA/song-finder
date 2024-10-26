@@ -73,10 +73,11 @@ if track_name:
         # recommendations = get_recommendations(track_name)
         
         with song_detail:
-            st.write(f"{track['artists'][0]['name']} - {track['name']}")
+            st.subheader("Your song :")
+            st.write(f"🗣️ {track['artists'][0]['name']} - {track['name']}")
             url = "https://open.spotify.com/track/"+str(track['id'])
             st.markdown('<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/232px-Spotify_icon.svg.png" width=20> '+url,unsafe_allow_html=True)
-            yt = st.button('Find on Youtube')
+            yt = st.button('🎞️ Find on Youtube')
             
             if yt:
                 try:
