@@ -70,7 +70,7 @@ if track_name:
                 conn.close()
         
         # API req 아껴두기
-        # recommendations = get_recommendations(track_name)
+        recommendations = get_recommendations(track_name)
         
         with song_detail:
             st.subheader("Your song :")
