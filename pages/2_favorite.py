@@ -28,16 +28,23 @@ if st.session_state.get('logged_in', False):
     st.title("Your Favorite Songs")
     
     songid_list = [song[0] for song in favorite_songs]
-    
-    col1, col2 = st.columns(2)
-    
+        
     if songid_list:
         tracks = sp.tracks(songid_list)
         for track in tracks['tracks']:
+            col1, col2 = st.columns(2)
             songid = track['id']
             with col1:
                 st.image(track['album']['images'][0]['url'], caption=f"{track['artists'][0]['name']} - {track['name']}", width=300)
             with col2:
+                st.write('')
+                url = "https://open.spotify.com/track/"+str(track['id'])
+                st.markdown(f'<a href="{url}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/232px-Spotify_icon.svg.png" width=20> Click to move</a>',unsafe_allow_html=True)
+                st.write(f"🎯 Track ID : {songid}")
+                st.write(f"🎧 Track : {track['name']}")
+                st.write(f"🗣️ Artist : {track['artists'][0]['name']}")
+                st.write(f"📅 Release date : {track['album']['release_date']}")
+                st.write(f"✨ Popularity : {track['popularity']}")
                 if st.button(f"⭐ Remove from favorites", key=songid):
                     cursor.execute("DELETE FROM favorite WHERE userid = ? AND songid = ?", (userid, songid))
                     conn.commit()  # 데이터베이스에 변경사항 저장

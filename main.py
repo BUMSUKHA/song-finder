@@ -40,7 +40,7 @@ song_detail, Recommendations = st.tabs(["🔍 Song detail", "🔮 Recommendation
 if st.session_state.get('logged_in', False):
     st.sidebar.title(f"Hello, {st.session_state.user['username']}")
     
-track_name = st.sidebar.text_input("Enter a song name:", value="APT.")
+track_name = st.sidebar.text_input("🎵 Enter a song name :", value="APT.")
 
 col1, col2, col3 = st.columns(3)
 
@@ -48,7 +48,9 @@ if track_name:
     try:   
         track = get_track(track_name)
         
-        st.sidebar.image(track['album']['images'][1]['url'], caption=f"{track['artists'][0]['name']} - {track['album']['name']}")
+        track_artists = ', '.join(artist['name'] for artist in track['artists'])
+            
+        st.sidebar.image(track['album']['images'][1]['url'], caption=f"{track_artists} - {track['album']['name']}")
         
         if st.session_state.get('logged_in', False):
             if st.sidebar.button("⭐Add a favorite"):
@@ -74,21 +76,21 @@ if track_name:
         
         with song_detail:
             st.subheader("Your song :")
-            st.write(f"🗣️ {track['artists'][0]['name']} - {track['name']}")
+            st.write(f"🗣️ {track_artists} - {track['name']}")
             url = "https://open.spotify.com/track/"+str(track['id'])
             st.markdown('<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/232px-Spotify_icon.svg.png" width=20> '+url,unsafe_allow_html=True)
             yt = st.button('🎞️ Find on Youtube')
             
             if yt:
                 try:
-                    videos_search = VideosSearch(f"{track['name']} - {track['artists'][0]['name']}", limit=1)
+                    videos_search = VideosSearch(f"{track['name']} - {track_artists}", limit=1)
                     result = videos_search.result()
                     video_url = result['result'][0]['link']
                     st.video(video_url)
                 except:
                     st.write('Did not find the track on Youtube')
                     
-            ft = st.checkbox('Feature plot',value=True)
+            ft = st.checkbox('📈 Feature plot',value=True)
             
             if ft:     
                 track_features = sp.audio_features([track['id']])
@@ -103,15 +105,18 @@ if track_name:
                 stats=np.concatenate((stats,[stats[0]]))
                 angles=np.concatenate((angles,[angles[0]]))
 
-                fig=plt.figure(figsize = (18,18))
+                fig=plt.figure(figsize = (18,18), facecolor='none')
                 ax = fig.add_subplot(221, polar=True)
-                ax.plot(angles, stats, 'o-', linewidth=2, label = "Features", color= 'gray')
-                ax.fill(angles, stats, alpha=0.25, facecolor='gray')
-                ax.set_thetagrids(angles[0:7] * 180/np.pi, labels , fontsize = 13)
+                ax.plot(angles, stats, 'o-', linewidth=2, label = "Features", color= '#778899')
+                ax.fill(angles, stats, alpha=0.25, facecolor='#778899')
+                ax.set_thetagrids(angles[0:7] * 180/np.pi, labels , fontsize = 13, color='gray')
                 ax.set_rlabel_position(250)
-                plt.yticks([0.2 , 0.4 , 0.6 , 0.8  ], ["0.2",'0.4', "0.6", "0.8"], color="grey", size=12)
+                ax.patch.set_facecolor('none')
+                plt.yticks([0.2 , 0.4 , 0.6 , 0.8  ], ["0.2",'0.4', "0.6", "0.8"], color="gray", size=12)
                 plt.ylim(0,1)
-                plt.legend(loc='best', bbox_to_anchor=(0.1, 0.1))
+                leg = plt.legend(loc='best', bbox_to_anchor=(0.1, 0.1), edgecolor='gray', facecolor='none')
+                for text in leg.get_texts():
+                    text.set_color('gray')
 
                 st.pyplot(fig)
 
