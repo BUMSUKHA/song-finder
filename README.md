@@ -1,6 +1,6 @@
 # Song Finder[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://song-finder.streamlit.app/)
 
-![loveless](img/loveless.jpg)
+![loveless](img/main.jpg)
 
 **목차:**
 1. [노래 검색](#search)
@@ -10,6 +10,8 @@
 5. [즐겨찾기](#fav)
 
 ## 1. <a name="search"></a>노래 검색
+
+![feature-plot](img/search/4) ![feature-plot](img/search/5)
 
 왼쪽 사이드바에 위치한 검색창을 통해 원하는 노래를 검색할 수 있습니다. 검색 결과로는 노래의 상세 정보와 함께 스포티파이로 이동할 수 있는 링크가 제공되며, 유튜브 영상을 바로 재생할 수 있는 버튼도 함께 표시됩니다.
 
