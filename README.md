@@ -8,6 +8,7 @@
 4. [사용자 계정 관리](#account)
 5. [즐겨찾기](#fav)
 <br/>
+
 ## 1. <a name="search"></a>노래 검색
 
 ![search-page](img/1.png)
