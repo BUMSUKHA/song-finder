@@ -1,5 +1,5 @@
 # Song Finder🎵[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://song-finder.streamlit.app/)
-![sergent-pepper](img/.jpg)
+![loveless](img/loveless.jpg)
 
 <br/>
 
