@@ -1,5 +1,5 @@
 # Song Finder🎵[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://song-finder.streamlit.app/)
-![loveless](img/loveless.jpg){: width="20%" height="20%"}
+<img src="img/loveless.jpg" height="20%"/>
 
 <br/>
 
