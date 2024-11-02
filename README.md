@@ -151,3 +151,8 @@
 ```
 
 <br/>
+
+## Spotify API
+Spotipy 모듈을 활용하여 Spotify API에 액세스합니다.
+* https://spotipy.readthedocs.io/en/2.24.0/
+* https://developer.spotify.com/documentation/web-api
