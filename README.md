@@ -1,12 +1,12 @@
 # Song Finder[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://song-finder.streamlit.app/)
-
+<br/>
 **목차:**
 1. [노래 검색](#search)
 2. [노래 특징 분석](#taste)
 3. [노래 추천](#reco)
 4. [사용자 계정 관리](#account)
 5. [즐겨찾기](#fav)
-
+<br/>
 ## 1. <a name="search"></a>노래 검색
 
 ![search-page](img/1.png)
